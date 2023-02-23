@@ -23,7 +23,7 @@ async function getWeatherByLocation(lat, lon) {
   }
 }
 
-getWeatherByLocation("1.2921", "36.8219");
+getWeatherByLocation("51.5072", "0.1276");
 
 function KtoC(K) {
   return (K - 273.15).toFixed(2);
