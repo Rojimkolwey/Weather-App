@@ -23,6 +23,10 @@ async function getWeatherByLocation(lat, lon) {
   }
 }
 
+function  addWeatherToPage (data){
+  const temp KtoC(data.main.temp)
+}
+
 getWeatherByLocation("51.5072", "0.1276");
 
 function KtoC(K) {
