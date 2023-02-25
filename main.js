@@ -1,4 +1,8 @@
 const apikey = "fac8ce50374d84e2944c13b033dcc6e3";
+const main = document.getElementById("main");
+const form = document.getElementById("form");
+const searchLat = document.getElementById("searchLat");
+const searchLon = document.getElementById("searchLon");
 
 async function getWeatherByLocation(lat, lon) {
   try {
@@ -18,17 +22,40 @@ async function getWeatherByLocation(lat, lon) {
     const respData = await resp.json();
 
     console.log(respData, KtoC(respData.main.temp));
+    addWeatherToPage(respData, lat, lon);
   } catch (error) {
     console.log("error", error);
   }
 }
 
-function  addWeatherToPage (data){
-  const temp KtoC(data.main.temp)
+function addWeatherToPage(data, lat, lon) {
+  const temp = KtoC(data.main.temp);
+
+  const weather = document.createElement("div");
+  weather.classList.add("weather");
+
+  weather.innerHTML = `
+  <small>There are</small>
+  <h2>${temp}°C</h2>
+  <p> in ${lat} ${lon}</p>
+  `;
+
+  main.appendChild(weather);
 }
 
-getWeatherByLocation("51.5072", "0.1276");
+// getWeatherByLocation("51.5072", "0.1276");
 
 function KtoC(K) {
   return (K - 273.15).toFixed(2);
 }
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  //check
+  const lat = searchLat.value;
+  const lon = searchLon.value;
+
+  if (lat && lon) {
+    getWeatherByLocation(lat, lon);
+  }
+});
