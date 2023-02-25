@@ -35,9 +35,9 @@ function addWeatherToPage(data, lat, lon) {
   weather.classList.add("weather");
 
   weather.innerHTML = `
-  <small>There are</small>
-  <h2>${temp}°C</h2>
-  <p> in ${lat} ${lon}</p>
+  <h2>  <img src = "http://openweathermap.org/img/wn/${data.weather[0].icon}.png"/>${temp}°C</h2> 
+  <small> in ${lat} ${lon}</small>
+  
   `;
 
   main.appendChild(weather);
