@@ -36,7 +36,7 @@ function addWeatherToPage(data, lat, lon) {
 
   weather.innerHTML = `
   <h2>  <img src = "http://openweathermap.org/img/wn/${data.weather[0].icon}.png"/>${temp}°C</h2> 
-  <small> in ${lat} ${lon}</small>
+  <small>${data.weather[0].main}</small>
   
   `;
 
